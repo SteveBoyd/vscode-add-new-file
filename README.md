@@ -1,2 +1,2 @@
-# vscode-add-new-file
+# Add New File
 VSCode extensions to add file with shortcut
