@@ -1,21 +1,13 @@
 import * as vscode from "vscode";
 
-import { FileSystemWrapper } from "./file-system-wrapper";
+import { AddNewFileHandler } from "./add-new-file-handler";
 
-const fileSystem: FileSystemWrapper = new FileSystemWrapper();
+const addNewFileHandler: AddNewFileHandler = new AddNewFileHandler();
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "extension.addNewFile",
-    () => {
-      vscode.window.showInputBox().then((result: string | undefined) => {
-        if (result) {
-          const appRoot = vscode.workspace.rootPath;
-          const filePath = `${appRoot}\\${result}`;
-          fileSystem.writeToFile(filePath, "foo");
-        }
-      });
-    }
+    addNewFileHandler.addNewFile
   );
 
   context.subscriptions.push(disposable);
