@@ -1,19 +1,23 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
 
-import { FileSystemWrapper } from "./file-system-wrapper";
+import { FileSystemWrapper } from './file-system-wrapper';
 
 export class AddNewFileHandler {
   public addNewFile() {
-    vscode.window.showInputBox().then(
-      (result: string | undefined): void => {
-        if (result) {
-          const appRoot = vscode.workspace.rootPath;
-          const filePath = `${appRoot}\\${result}`;
-
-          const fileSystem = new FileSystemWrapper();
-          fileSystem.writeToFile(filePath, "foo");
+    const rootPath: string = vscode.workspace.rootPath || '';
+    const rootPathLength: number = rootPath.length;
+    vscode.window
+      .showInputBox({
+        value: rootPath,
+        valueSelection: [rootPathLength, rootPathLength]
+      })
+      .then(
+        (result: string | undefined): void => {
+          if (result) {
+            const fileSystem = new FileSystemWrapper();
+            fileSystem.writeToFile(result, 'foo');
+          }
         }
-      }
-    );
+      );
   }
 }
