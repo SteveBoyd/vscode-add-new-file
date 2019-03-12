@@ -15,7 +15,12 @@ export class AddNewFileHandler {
         (result: string | undefined): void => {
           if (result) {
             const fileSystem = new FileSystemWrapper();
-            fileSystem.writeToFile(result, 'foo');
+
+            if (result.endsWith('/') || result.endsWith('\\')) {
+              fileSystem.createDirectory(result);
+            } else {
+              fileSystem.writeToFile(result, 'foo');
+            }
           }
         }
       );
