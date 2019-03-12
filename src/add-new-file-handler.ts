@@ -14,12 +14,13 @@ export class AddNewFileHandler {
       .then(
         (result: string | undefined): void => {
           if (result) {
+            const normalizedResult = result.replace('\\', '/');
             const fileSystem = new FileSystemWrapper();
 
-            if (result.endsWith('/') || result.endsWith('\\')) {
-              fileSystem.createDirectory(result);
+            if (normalizedResult.endsWith('/')) {
+              fileSystem.createDirectory(normalizedResult);
             } else {
-              fileSystem.writeToFile(result, 'foo');
+              fileSystem.writeToFile(normalizedResult, 'foo');
             }
           }
         }

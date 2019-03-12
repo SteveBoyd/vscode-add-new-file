@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from 'fs';
 
 export class FileSystemWrapper {
   writeToFile(path: string, content: string): void {
@@ -7,6 +7,10 @@ export class FileSystemWrapper {
   }
 
   createDirectory(path: string): void {
-    fs.mkdir(path, (error) => console.log(error));
+    fs.mkdir(path, error => {
+      if (error) {
+        console.log(error);
+      }
+    });
   }
 }
