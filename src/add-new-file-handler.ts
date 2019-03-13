@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 
 import { FileSystemWrapper } from './file-system-wrapper';
+import { StringHelpers } from './helpers/string-helpers';
 
 export class AddNewFileHandler {
   public addNewFile() {
@@ -14,10 +15,17 @@ export class AddNewFileHandler {
       .then(
         (result: string | undefined): void => {
           if (result) {
-            const normalizedResult = result.replace('\\', '/');
             const fileSystem = new FileSystemWrapper();
+            const stringHelpers = new StringHelpers();
 
-            if (normalizedResult.endsWith('/')) {
+            const normalizedResult = stringHelpers.replaceAll(
+              result,
+              '/',
+              '\\'
+            );
+
+            console.log(normalizedResult);
+            if (normalizedResult.endsWith('\\')) {
               fileSystem.createDirectory(normalizedResult);
             } else {
               fileSystem.writeToFile(normalizedResult, 'foo');
