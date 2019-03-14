@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import mkdirp = require('mkdirp');
 
 export class FileSystemWrapper {
   writeToFile(path: string, content: string): void {
@@ -8,10 +7,8 @@ export class FileSystemWrapper {
   }
 
   createDirectory(path: string): void {
-    mkdirp(path, (error: any) => {
-      if (error) {
-        console.error(error);
-      }
-    });
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path);
+    }
   }
 }

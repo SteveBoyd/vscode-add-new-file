@@ -14,10 +14,12 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
-			"command": "extension.addNewFile",
-			"title": "Add New File"
-		}]
+		"commands": [
+			{
+				"command": "extension.addNewFile",
+				"title": "Add New File"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -29,7 +31,6 @@
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.30",
-		"mkdirp": "^0.5.1",
 		"tslint": "^5.12.1",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28"

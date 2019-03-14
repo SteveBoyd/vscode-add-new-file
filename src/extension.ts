@@ -1,12 +1,9 @@
-import * as vscode from "vscode";
-
-import { AddNewFileHandler } from "./add-new-file-handler";
-
-const addNewFileHandler: AddNewFileHandler = new AddNewFileHandler();
+import * as vscode from 'vscode';
+import * as addNewFileHandler from './add-new-file-handler';
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
-    "extension.addNewFile",
+    'extension.addNewFile',
     addNewFileHandler.addNewFile
   );
 
