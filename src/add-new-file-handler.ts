@@ -2,9 +2,12 @@ import * as vscode from 'vscode';
 
 import { FileSystemWrapper } from './file-system-wrapper';
 import { StringHelpers } from './helpers/string-helpers';
+import { FileTypeIdentifier } from './file-type-identifier';
+import { FileType } from './enums/file-type.enum';
 
 const fileSystem: FileSystemWrapper = new FileSystemWrapper();
 const stringHelpers: StringHelpers = new StringHelpers();
+const fileTypeIdentifier: FileTypeIdentifier = new FileTypeIdentifier();
 
 export function addNewFile() {
   const rootPath: string = vscode.workspace.rootPath || '';
@@ -34,16 +37,20 @@ function processUserInput(userInput: string | undefined): void {
 
     let builtPath: string = '';
     for (let pathPart of resultParts) {
+      const fileType = fileTypeIdentifier.identifyFileType(pathPart);
       builtPath = builtPath.concat(pathPart);
-      processPath(builtPath);
+      processPath(builtPath, fileType);
     }
   }
 }
 
-function processPath(path: string): void {
-  if (path.endsWith('\\')) {
-    fileSystem.createDirectory(path);
-  } else {
-    fileSystem.writeToFile(path, 'foo');
+function processPath(path: string, fileType: FileType): void {
+  switch (fileType) {
+    case FileType.Directory:
+      fileSystem.createDirectory(path);
+      break;
+    default:
+      fileSystem.writeToFile(path, '');
+      break;
   }
 }
