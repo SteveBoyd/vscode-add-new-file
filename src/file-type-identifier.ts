@@ -6,6 +6,14 @@ export class FileTypeIdentifier {
       return FileType.Directory;
     }
 
+    if (name.endsWith('.enum.ts')) {
+      return FileType.TypescriptEnum;
+    }
+
+    if (name.endsWith('.ts')) {
+      return FileType.TypescriptClass;
+    }
+
     return FileType.Unknown;
   }
 }

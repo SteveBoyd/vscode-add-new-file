@@ -49,6 +49,12 @@ function processPath(path: string, fileType: FileType): void {
     case FileType.Directory:
       fileSystem.createDirectory(path);
       break;
+    case FileType.TypescriptClass:
+      fileSystem.writeToFile(path, 'export class FileName {}');
+      break;
+    case FileType.TypescriptEnum:
+      fileSystem.writeToFile(path, 'export enum FileName {}');
+      break;
     default:
       fileSystem.writeToFile(path, '');
       break;
