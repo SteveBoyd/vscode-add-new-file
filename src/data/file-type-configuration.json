@@ -1,0 +1,13 @@
+{
+    "FileTypeConfigurations": [{
+            "Identifier": "TypescriptClass",
+            "Pattern": "^[^.]+[.]ts$",
+            "FileTemplate": "export class [[FileName]] {}"
+        },
+        {
+            "Identifier": "TypescriptEnum",
+            "Pattern": "^[^.]+[.]enum[.]ts$",
+            "FileTemplate": "export enum [[FileName]] {}"
+        }
+    ]
+}

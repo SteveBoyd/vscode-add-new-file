@@ -1,13 +1,12 @@
 import * as vscode from 'vscode';
+import * as fileSystem from './file-system-wrapper';
+import * as stringHelpers from './helpers/string-helpers';
+import * as fileConfigurationProvider from './providers/file-configuration-provider';
+import * as nameProvider from './providers/name-provider';
+import * as templateHelpers from './helpers/file-template-helpers';
 
-import { FileSystemWrapper } from './file-system-wrapper';
-import { StringHelpers } from './helpers/string-helpers';
-import { FileTypeIdentifier } from './file-type-identifier';
 import { FileType } from './enums/file-type.enum';
-
-const fileSystem: FileSystemWrapper = new FileSystemWrapper();
-const stringHelpers: StringHelpers = new StringHelpers();
-const fileTypeIdentifier: FileTypeIdentifier = new FileTypeIdentifier();
+import { FileConfiguration } from './models/file-configuration';
 
 export function addNewFile() {
   const rootPath: string = vscode.workspace.rootPath || '';
@@ -37,26 +36,28 @@ function processUserInput(userInput: string | undefined): void {
 
     let builtPath: string = '';
     for (let pathPart of resultParts) {
-      const fileType = fileTypeIdentifier.identifyFileType(pathPart);
       builtPath = builtPath.concat(pathPart);
-      processPath(builtPath, fileType);
-    }
-  }
-}
+      const fileConfiguration = fileConfigurationProvider.getFileConfiguration(
+        pathPart
+      );
 
-function processPath(path: string, fileType: FileType): void {
-  switch (fileType) {
-    case FileType.Directory:
-      fileSystem.createDirectory(path);
-      break;
-    case FileType.TypescriptClass:
-      fileSystem.writeToFile(path, 'export class FileName {}');
-      break;
-    case FileType.TypescriptEnum:
-      fileSystem.writeToFile(path, 'export enum FileName {}');
-      break;
-    default:
-      fileSystem.writeToFile(path, '');
-      break;
+      if (fileConfiguration.identifier === 'Directory') {
+        fileSystem.createDirectory(builtPath);
+        continue;
+      }
+      let template = fileConfiguration.fileTemplate;
+
+      var runReplacement = templateHelpers.hasReplaceableSections(template);
+
+      if (runReplacement) {
+        var fileNameReplacement = nameProvider.getNameFromFileName(pathPart);
+        template = templateHelpers.runReplacement(
+          template,
+          fileNameReplacement
+        );
+      }
+
+      fileSystem.writeToFile(builtPath, template);
+    }
   }
 }
