@@ -5,11 +5,12 @@ import * as fileConfigurationProvider from './providers/file-configuration-provi
 import * as nameProvider from './providers/name-provider';
 import * as templateHelpers from './helpers/file-template-helpers';
 
-import { FileType } from './enums/file-type.enum';
-import { FileConfiguration } from './models/file-configuration';
-
 export function addNewFile() {
-  const rootPath: string = vscode.workspace.rootPath || '';
+  let rootPath = '';
+  if (vscode.workspace.rootPath) {
+    rootPath = `${vscode.workspace.rootPath}\\`;
+  }
+
   const rootPathLength: number = rootPath.length;
 
   try {
