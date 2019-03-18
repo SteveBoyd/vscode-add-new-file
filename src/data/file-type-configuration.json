@@ -8,6 +8,11 @@
             "Identifier": "TypescriptEnum",
             "Pattern": "^[^.]+[.]enum[.]ts$",
             "FileTemplate": "export enum [[FileName]] {}"
+        },
+        {
+            "Identifier": "GitIgnore",
+            "Pattern": "[.]gitignore",
+            "FileTemplate": "dist/"
         }
     ]
 }
