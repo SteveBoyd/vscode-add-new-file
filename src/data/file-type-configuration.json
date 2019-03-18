@@ -2,17 +2,17 @@
     "FileTypeConfigurations": [{
             "Identifier": "TypescriptClass",
             "Pattern": "^[^.]+[.]ts$",
-            "FileTemplate": "export class [[FileName]] {}"
+            "FileTemplate": "export class [[FileName]] \n{\n\t\n}"
         },
         {
             "Identifier": "TypescriptEnum",
             "Pattern": "^[^.]+[.]enum[.]ts$",
-            "FileTemplate": "export enum [[FileName]] {}"
+            "FileTemplate": "export enum [[FileName]] \n{\n\t\n}"
         },
         {
             "Identifier": "GitIgnore",
             "Pattern": "[.]gitignore",
-            "FileTemplate": "dist/"
+            "FileTemplate": "dist/\nnode_modules/"
         }
     ]
 }
