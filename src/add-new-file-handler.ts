@@ -42,11 +42,11 @@ function processUserInput(userInput: string | undefined): void {
         pathPart
       );
 
-      if (fileConfiguration.identifier === 'Directory') {
+      if (fileConfiguration.Identifier === 'Directory') {
         fileSystem.createDirectory(builtPath);
         continue;
       }
-      let template = fileConfiguration.fileTemplate;
+      let template = fileConfiguration.FileTemplate;
 
       var runReplacement = templateHelpers.hasReplaceableSections(template);
 

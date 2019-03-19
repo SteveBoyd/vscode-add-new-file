@@ -1,22 +1,39 @@
-import { FileConfiguration } from '../models/file-configuration';
+import * as vscode from 'vscode';
 import * as data from '../data/file-type-configuration.json';
+import * as fileSystemWrapper from '../file-system-wrapper';
+import { FileConfiguration } from '../models/file-configuration';
 
 export function getFileConfiguration(fileName: string): FileConfiguration {
   if (fileName.endsWith('\\') || fileName.endsWith('/')) {
-    return { identifier: 'Directory' } as FileConfiguration;
+    return { Identifier: 'Directory' } as FileConfiguration;
   }
 
-  for (let fileConfig of data.FileTypeConfigurations) {
+  let configurationData: FileConfiguration[] = data.FileTypeConfigurations;
+
+  const customDataPath = `${
+    vscode.workspace.rootPath
+  }\\file-type-configuration.json`;
+  let customData: any = fileSystemWrapper.readJsonFile(customDataPath);
+  if (customData && customData.FileTypeConfigurations) {
+    for (let customConfig of customData.FileTypeConfigurations) {
+      configurationData = configurationData.filter(
+        item => item.Identifier !== customConfig.Identifier
+      );
+      configurationData = configurationData.concat(customConfig);
+    }
+  }
+
+  for (let fileConfig of configurationData) {
     if (fileName.match(fileConfig.Pattern)) {
       return {
-        identifier: fileConfig.Identifier,
-        fileTemplate: fileConfig.FileTemplate
+        Identifier: fileConfig.Identifier,
+        FileTemplate: fileConfig.FileTemplate
       } as FileConfiguration;
     }
   }
 
   return {
-    identifier: 'Unknown',
-    fileTemplate: ''
+    Identifier: 'Unknown',
+    FileTemplate: ''
   } as FileConfiguration;
 }

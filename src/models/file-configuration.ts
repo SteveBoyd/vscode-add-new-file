@@ -1,4 +1,5 @@
 export interface FileConfiguration {
-  identifier: string;
-  fileTemplate: string;
+  Identifier: string;
+  Pattern: string;
+  FileTemplate: string;
 }

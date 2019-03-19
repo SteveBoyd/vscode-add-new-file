@@ -10,3 +10,15 @@ export function createDirectory(path: string): void {
     fs.mkdirSync(path);
   }
 }
+
+export function readJsonFile(path: string): string | null {
+  try {
+    if (fs.existsSync(path)) {
+      return JSON.parse(fs.readFileSync(path, 'utf8'));
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  
+  return null;
+}
