@@ -18,7 +18,7 @@
 	"contributes": {
 		"commands": [{
 			"command": "extension.addNewFile",
-			"title": "Add New File"
+			"title": "Add File: Add New File"
 		}]
 	},
 	"scripts": {
