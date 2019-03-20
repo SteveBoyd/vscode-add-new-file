@@ -37,3 +37,7 @@ export function getFileConfiguration(fileName: string): FileConfiguration {
     FileTemplate: ''
   } as FileConfiguration;
 }
+
+export function getDefaultFileConfigurationJson(): string {
+  return JSON.stringify(data);
+}

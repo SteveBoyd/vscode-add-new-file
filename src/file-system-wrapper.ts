@@ -19,6 +19,26 @@ export function readJsonFile(path: string): string | null {
   } catch (e) {
     console.error(e);
   }
-  
+
   return null;
+}
+
+export function copyFile(
+  source: string,
+  destination: string,
+  overwrite: boolean
+): void {
+  if (!fs.existsSync(source)) {
+    return;
+  }
+
+  if (fs.existsSync(destination)) {
+    if (!overwrite) {
+      return;
+    }
+
+    fs.unlinkSync(destination);
+  }
+
+  fs.copyFileSync(source, destination);
 }

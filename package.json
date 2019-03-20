@@ -12,14 +12,20 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.addNewFile"
+		"onCommand:extension.addNewFile",
+		"onCommand:extension.addCustomTemplateFile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
-			"command": "extension.addNewFile",
-			"title": "Add File: Add New File"
-		}]
+				"command": "extension.addNewFile",
+				"title": "Add File: Add New File"
+			},
+			{
+				"command": "extension.addCustomTemplateFile",
+				"title": "Add File: Add Custom Templates"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
