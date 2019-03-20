@@ -1,6 +1,6 @@
 {
-	"name": "addnewfile",
-	"displayName": "Add New File",
+	"name": "addfile",
+	"displayName": "Add File",
 	"description": "Provides a shortcut for creating files with a relevant template",
 	"version": "0.0.1",
 	"publisher": "SteveBoydDev",
