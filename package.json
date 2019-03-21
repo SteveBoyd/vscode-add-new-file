@@ -25,7 +25,12 @@
 				"command": "extension.addCustomTemplateFile",
 				"title": "Add File: Add Custom Templates"
 			}
-		]
+		],
+		"keybindings": [{
+			"command": "extension.addNewFile",
+			"key": "shift+f2",
+			"when": "workspaceFolderCount != 0"
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
