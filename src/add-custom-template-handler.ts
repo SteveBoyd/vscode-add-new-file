@@ -7,4 +7,7 @@ export function addCustomTemplateFile(): void {
   const data = fileConfigProvider.getDefaultFileConfigurationJson();
 
   fileSystem.writeToFile(path, data);
+  vscode.workspace
+    .openTextDocument(path)
+    .then(doc => vscode.window.showTextDocument(doc));
 }

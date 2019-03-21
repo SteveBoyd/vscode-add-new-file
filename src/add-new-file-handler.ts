@@ -10,7 +10,7 @@ export function addNewFile() {
   if (vscode.workspace.rootPath) {
     rootPath = `${vscode.workspace.rootPath}\\`;
   }
-
+  
   const rootPathLength: number = rootPath.length;
 
   try {
@@ -59,6 +59,9 @@ function processUserInput(userInput: string | undefined): void {
       }
 
       fileSystem.writeToFile(builtPath, template);
+      vscode.workspace
+        .openTextDocument(builtPath)
+        .then(doc => vscode.window.showTextDocument(doc));
     }
   }
 }
