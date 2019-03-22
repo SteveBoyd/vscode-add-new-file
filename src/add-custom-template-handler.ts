@@ -6,6 +6,7 @@ export function addCustomTemplateFile(): void {
   const path = `${vscode.workspace.rootPath}\\file-type-configuration.json`;
   const data = fileConfigProvider.getDefaultFileConfigurationJson();
 
+  fileSystem.deleteFile(path);
   fileSystem.writeToFile(path, data);
   vscode.workspace
     .openTextDocument(path)

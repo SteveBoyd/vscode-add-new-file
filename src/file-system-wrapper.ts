@@ -42,3 +42,9 @@ export function copyFile(
 
   fs.copyFileSync(source, destination);
 }
+
+export function deleteFile(path: string): void {
+  if (path && fs.existsSync(path)) {
+    fs.unlinkSync(path);
+  }
+}
