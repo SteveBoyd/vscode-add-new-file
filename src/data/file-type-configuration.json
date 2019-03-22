@@ -13,6 +13,11 @@
             "Identifier": "GitIgnore",
             "Pattern": "[.]gitignore",
             "FileTemplate": "dist/\nnode_modules/"
+        },
+        {
+            "Identifier": "C#Interface",
+            "Pattern": "^I.+[.]cs$",
+            "FileTemplate": "public interface [[FileName]] {\n\t\n}"
         }
     ]
 }
