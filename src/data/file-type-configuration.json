@@ -18,6 +18,11 @@
             "Identifier": "C#Interface",
             "Pattern": "^I.+[.]cs$",
             "FileTemplate": "public interface [[FileName]] {\n\t\n}"
+        },
+        {
+            "Identifier": "C#Class",
+            "Pattern": "^[^I].+[.]cs$",
+            "FileTemplate": "public class [[FileName]] {\n\t\n}"
         }
     ]
 }
