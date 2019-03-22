@@ -13,9 +13,9 @@ export function getFileConfiguration(fileName: string): FileConfiguration {
   const customDataPath = `${
     vscode.workspace.rootPath
   }\\file-type-configuration.json`;
-  let customData: any = fileSystemWrapper.readJsonFile(customDataPath);
-  if (customData && customData.FileTypeConfigurations) {
-    for (let customConfig of customData.FileTypeConfigurations) {
+  let customData = fileSystemWrapper.readJsonFile(customDataPath);
+  if (customData) {
+    for (let customConfig of customData) {
       configurationData = configurationData.filter(
         item => item.Identifier !== customConfig.Identifier
       );
@@ -39,5 +39,5 @@ export function getFileConfiguration(fileName: string): FileConfiguration {
 }
 
 export function getDefaultFileConfigurationJson(): string {
-  return JSON.stringify(data);
+  return JSON.stringify(data.FileTypeConfigurations);
 }
