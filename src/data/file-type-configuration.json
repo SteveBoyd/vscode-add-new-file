@@ -11,7 +11,7 @@
         },
         {
             "Identifier": "GitIgnore",
-            "Pattern": "[.]gitignore",
+            "Pattern": "^[.]gitignore$",
             "FileTemplate": "dist/\nnode_modules/"
         },
         {
