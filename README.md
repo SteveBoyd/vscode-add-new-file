@@ -14,17 +14,17 @@ You can replace existing templates or specify your own by placing a file-type-co
         {
             "Identifier": "TypescriptClass",
             "Pattern": "^[^.]+[.]ts$",
-            "FileTemplate": "export class [[FileName]] \n{\n\t\n}"
+            "File Template": "export class [[FileName]] \n{\n\t\n}"
         },
         {
             "Identifier": "TypescriptEnum",
             "Pattern": "^[^.]+[.]enum[.]ts$",
-            "FileTemplate": "export enum [[FileName]] \n{\n\t\n}"
+            "File Template": "export enum [[FileName]] \n{\n\t\n}"
         },
         {
             "Identifier": "GitIgnore",
             "Pattern": "[.]gitignore",
-            "FileTemplate": "dist/\nnode_modules/"
+            "File Template": "dist/\nnode_modules/"
         }
     ]
 }
@@ -40,7 +40,7 @@ You can replace existing templates or specify your own by placing a file-type-co
 ^[^.]+[.]ts$"
 ```
 
-#### FileTemplate
+#### File Template
 
 ```typescript
 export class [[FileName]]
@@ -57,7 +57,7 @@ export class [[FileName]]
 ^[^.]+[.]enum[.]ts$
 ```
 
-#### FileTemplate
+#### File Template
 
 ```typescript
 export enum [[FileName]]
@@ -74,9 +74,57 @@ export enum [[FileName]]
 [.]gitignore
 ```
 
-#### FileTemplate
+#### File Template
 
 ```
 dist/
 node_modules/
+```
+
+### C# Interface
+
+#### Pattern
+
+```regex
+^I.+[.]cs$
+```
+
+#### File Template
+
+```C#
+public interface [[FileName]] {
+
+}
+```
+
+### C# Class
+
+#### Pattern
+
+```regex
+^[^I].+[.]cs$
+```
+
+#### File Template
+
+```C#
+public class [[FileName]] {
+
+}
+```
+
+### JSON
+
+#### Pattern
+
+```regex
+^.+[.]json$
+```
+
+#### File Template
+
+```
+{
+    "[[FileName]]": ""
+}
 ```
