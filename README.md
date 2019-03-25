@@ -4,6 +4,16 @@ VSCode extension to enable adding new files with template based on file type.
 
 Inspired by Visual Studio extension [AddAnyFile](https://github.com/madskristensen/AddAnyFile)
 
+## Available Actions
+
+### Add File: Add New File
+
+Used for creating new file at the path specified by the user. Opens input box prepopulated with the root path of the current workspace.
+
+### Add File: Add Custom Templates
+
+Generates a JSON file at the root of the project to hold user defined templates.
+
 ## Customising Templates
 
 You can replace existing templates or specify your own by placing a file-type-configuration.json file at the root of the workspace. The content of the file should be as follows:
