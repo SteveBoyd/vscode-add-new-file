@@ -28,6 +28,11 @@
             "Identifier": "JSON",
             "Pattern": "^.+[.]json$",
             "FileTemplate": "{\n\t\"[[FileName]]\": \"\"\n}"
+        },
+        {
+            "Identifier": "TypescriptAngularComponent",
+            "Pattern": "^.+[.]component.ts$",
+            "FileTemplate": "import { Component } from '@angular/core';\n\n@Component({\n\tselector: '',\n\ttemplateUrl: '',\n\tstyleUrls: ['']\n})\nexport class [[FileName]] {\n\t\n}"
         }
     ]
 }
