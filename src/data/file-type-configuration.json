@@ -33,6 +33,11 @@
             "Identifier": "TypescriptAngularComponent",
             "Pattern": "^.+[.]component.ts$",
             "FileTemplate": "import { Component } from '@angular/core';\n\n@Component({\n\tselector: '',\n\ttemplateUrl: '',\n\tstyleUrls: ['']\n})\nexport class [[FileName]] {\n\t\n}"
+        },
+        {
+            "Identifier": "TypescriptAngularModule",
+            "Pattern": "^.+[.]module[.]ts$",
+            "FileTemplate": "import { NgModule } from '@angular/core';\n\n@NgModule({\n\tdeclarations: [],\n\timports: [],\n\tproviders: [],\n\tbootstrap: []\n})\nexport class [[FileName]] {\n\t\n}"
         }
     ]
 }
