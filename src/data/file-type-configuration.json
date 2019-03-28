@@ -1,43 +1,49 @@
 {
-    "FileTypeConfigurations": [{
-            "Identifier": "TypescriptClass",
-            "Pattern": "^[^.]+[.]ts$",
-            "FileTemplate": "export class [[FileName]] \n{\n\t\n}"
-        },
-        {
-            "Identifier": "TypescriptEnum",
-            "Pattern": "^[^.]+[.]enum[.]ts$",
-            "FileTemplate": "export enum [[FileName]] \n{\n\t\n}"
-        },
-        {
-            "Identifier": "GitIgnore",
-            "Pattern": "^[.]gitignore$",
-            "FileTemplate": "dist/\nnode_modules/"
-        },
-        {
-            "Identifier": "C#Interface",
-            "Pattern": "^I.+[.]cs$",
-            "FileTemplate": "public interface [[FileName]] {\n\t\n}"
-        },
-        {
-            "Identifier": "C#Class",
-            "Pattern": "^[^I].+[.]cs$",
-            "FileTemplate": "public class [[FileName]] {\n\t\n}"
-        },
-        {
-            "Identifier": "JSON",
-            "Pattern": "^.+[.]json$",
-            "FileTemplate": "{\n\t\"[[FileName]]\": \"\"\n}"
-        },
-        {
-            "Identifier": "TypescriptAngularComponent",
-            "Pattern": "^.+[.]component[.]ts$",
-            "FileTemplate": "import { Component } from '@angular/core';\n\n@Component({\n\tselector: '',\n\ttemplateUrl: '',\n\tstyleUrls: ['']\n})\nexport class [[FileName]] {\n\t\n}"
-        },
-        {
-            "Identifier": "TypescriptAngularModule",
-            "Pattern": "^.+[.]module[.]ts$",
-            "FileTemplate": "import { NgModule } from '@angular/core';\n\n@NgModule({\n\tdeclarations: [],\n\timports: [],\n\tproviders: [],\n\tbootstrap: []\n})\nexport class [[FileName]] {\n\t\n}"
-        }
-    ]
+  "FileTypeConfigurations": [
+    {
+      "Identifier": "TypescriptClass",
+      "Pattern": "^[^.]+[.]ts$",
+      "FileTemplate": "export class [[FileName]] \n{\n\t\n}"
+    },
+    {
+      "Identifier": "TypescriptEnum",
+      "Pattern": "^[^.]+[.]enum[.]ts$",
+      "FileTemplate": "export enum [[FileName]] \n{\n\t\n}"
+    },
+    {
+      "Identifier": "GitIgnore",
+      "Pattern": "^[.]gitignore$",
+      "FileTemplate": "dist/\nnode_modules/"
+    },
+    {
+      "Identifier": "C#Interface",
+      "Pattern": "^I.+[.]cs$",
+      "FileTemplate": "public interface [[FileName]] {\n\t\n}"
+    },
+    {
+      "Identifier": "C#Class",
+      "Pattern": "^[^I].+[.]cs$",
+      "FileTemplate": "public class [[FileName]] {\n\t\n}"
+    },
+    {
+      "Identifier": "JSON",
+      "Pattern": "^.+[.]json$",
+      "FileTemplate": "{\n\t\"[[FileName]]\": \"\"\n}"
+    },
+    {
+      "Identifier": "TypescriptAngularComponent",
+      "Pattern": "^.+[.]component[.]ts$",
+      "FileTemplate": "import { Component } from '@angular/core';\n\n@Component({\n\tselector: '',\n\ttemplateUrl: '',\n\tstyleUrls: ['']\n})\nexport class [[FileName]] {\n\t\n}"
+    },
+    {
+      "Identifier": "TypescriptAngularModule",
+      "Pattern": "^.+[.]module[.]ts$",
+      "FileTemplate": "import { NgModule } from '@angular/core';\n\n@NgModule({\n\tdeclarations: [],\n\timports: [],\n\tproviders: [],\n\tbootstrap: []\n})\nexport class [[FileName]] {\n\t\n}"
+    },
+    {
+      "Identifier": "TypescriptAngularSerice",
+      "Pattern": "^.+[.]service[.]ts$",
+      "FileTemplate": "import { Injectable } from '@angular/core';\n\n@Injectable({\n\tprovidedIn: 'root'\n})\nexport class [[FileName]] {\n\n\tconstructor() { }\n}"
+    }
+  ]
 }
