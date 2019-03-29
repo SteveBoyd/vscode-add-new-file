@@ -13,27 +13,36 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.addNewFile",
-		"onCommand:extension.addCustomTemplateFile"
+		"onCommand:extension.addCustomTemplateFile",
+		"onCommand:extension.explorerAddNewFile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.addNewFile",
 				"title": "Add File: Add New File"
 			},
 			{
 				"command": "extension.addCustomTemplateFile",
 				"title": "Add File: Add Custom Templates"
+			},
+			{
+				"command": "extension.explorerAddNewFile",
+				"title": "Add Templated File"
 			}
 		],
-		"keybindings": [
-			{
-				"command": "extension.addNewFile",
-				"key": "shift+f2",
-				"when": "workspaceFolderCount != 0"
-			}
-		]
+		"keybindings": [{
+			"command": "extension.addNewFile",
+			"key": "shift+f2",
+			"when": "workspaceFolderCount != 0"
+		}],
+		"menus": {
+			"explorer/context": [{
+				"command": "extension.explorerAddNewFile",
+				"when": "workspaceFolderCount != 0",
+				"group": "navigation"
+			}]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
