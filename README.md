@@ -215,4 +215,17 @@ If you want a file template to be added then you can either:
 - Raise a PR with the new template
 - Create an issue
 
-Issues should contain an the type of the template, an example file name, and the default requests content.
+### Raising a PR
+
+If you decide to add the template yourself you will need to:
+
+- Add the tempalte details to file-type-configuration.json
+- Update the README with the details of the new template
+
+### Raising an issue
+
+Requests for new template require 3 pieces of information to be included in the raised issue:
+
+- Type of the template (C# Class, GitIgnore, Angular Module, etc)
+- An example file name to create the pattern from
+- The default template content
