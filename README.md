@@ -138,3 +138,81 @@ public class [[FileName]] {
     "[[FileName]]": ""
 }
 ```
+
+### Typescript Angular Component
+
+#### Pattern
+
+```regex
+^.+[.]component[.]ts$
+```
+
+#### FileTemplate
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+    selector: '',
+    templateUrl: '',
+    styleUrls: ['']
+})
+export class [[FileName]] {
+
+}
+```
+
+### Typescript Angular Module
+
+#### Pattern
+
+```regex
+^.+[.]module[.]ts$
+```
+
+#### FileTemplate
+
+```typescript
+import { NgModule } from '@angular/core';
+
+@NgModule({
+    declarations: [],
+    imports: [],
+    providers: [],
+    bootstrap: []
+})
+export class [[FileName]] {
+
+}
+```
+
+### Typescript Angular Serice
+
+#### Pattern
+
+```regex
+^.+[.]service[.]ts$
+```
+
+#### FileTemplate
+
+```typescript
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class [[FileName]] {
+
+    constructor() { }
+}
+```
+
+## New Templates
+
+If you want a file template to be added then you can either:
+
+- Raise a PR with the new template
+- Create an issue
+
+Issues should contain an the type of the template, an example file name, and the default requests content.
