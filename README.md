@@ -10,35 +10,13 @@ Inspired by Visual Studio extension [AddAnyFile](https://github.com/madskristens
 
 Used for creating new file at the path specified by the user. Opens input box prepopulated with the root path of the current workspace.
 
-### Add File: Add Custom Templates
+### Add File: Edit Custom Templates
 
-Generates a JSON file at the root of the project to hold user defined templates.
+Opens the custom templates file for editing. If it does not exist it will be created in global storage.
 
 ## Customising Templates
 
-You can replace existing templates or specify your own by placing a file-type-configuration.json file at the root of the workspace. The content of the file should be as follows:
-
-```
-{
-    "FileTypeConfigurations": [
-        {
-            "Identifier": "TypescriptClass",
-            "Pattern": "^[^.]+[.]ts$",
-            "File Template": "export class [[FileName]] \n{\n\t\n}"
-        },
-        {
-            "Identifier": "TypescriptEnum",
-            "Pattern": "^[^.]+[.]enum[.]ts$",
-            "File Template": "export enum [[FileName]] \n{\n\t\n}"
-        },
-        {
-            "Identifier": "GitIgnore",
-            "Pattern": "[.]gitignore",
-            "File Template": "dist/\nnode_modules/"
-        }
-    ]
-}
-```
+You can define your own templates by running "Edit Custom Templates" from the command palette. This will generate a JSON file for you to place your own templates. You can even use it to overwrite the existing templates by setting the identifier to match the one from the default templates.
 
 ## Available Templates
 
@@ -219,7 +197,7 @@ If you want a file template to be added then you can either:
 
 If you decide to add the template yourself you will need to:
 
-- Add the tempalte details to file-type-configuration.json
+- Add the tempalte details to default.templates.json
 - Update the README with the details of the new template
 
 ### Raising an issue
