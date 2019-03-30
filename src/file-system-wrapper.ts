@@ -48,3 +48,7 @@ export function deleteFile(path: string): void {
     fs.unlinkSync(path);
   }
 }
+
+export function fileExists(path: string): boolean {
+  return fs.existsSync(path);
+}

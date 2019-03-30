@@ -13,40 +13,35 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.addNewFile",
-		"onCommand:extension.addCustomTemplateFile",
-		"onCommand:extension.explorerAddNewFile"
+		"onCommand:extension.explorerAddNewFile",
+		"onCommand:extension.editCustomTemplateFile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.addNewFile",
 				"title": "Add File: Add New File"
 			},
 			{
-				"command": "extension.addCustomTemplateFile",
-				"title": "Add File: Add Custom Templates"
-			},
-			{
 				"command": "extension.explorerAddNewFile",
 				"title": "Add Templated File"
-			}
-		],
-		"keybindings": [
+			},
 			{
-				"command": "extension.addNewFile",
-				"key": "shift+f2",
-				"when": "workspaceFolderCount != 0"
+				"command": "extension.editCustomTemplateFile",
+				"title": "Add File: Edit Custom Templates"
 			}
 		],
+		"keybindings": [{
+			"command": "extension.addNewFile",
+			"key": "shift+f2",
+			"when": "workspaceFolderCount != 0"
+		}],
 		"menus": {
-			"explorer/context": [
-				{
-					"command": "extension.explorerAddNewFile",
-					"when": "workspaceFolderCount != 0",
-					"group": "navigation"
-				}
-			]
+			"explorer/context": [{
+				"command": "extension.explorerAddNewFile",
+				"when": "workspaceFolderCount != 0",
+				"group": "navigation"
+			}]
 		}
 	},
 	"scripts": {

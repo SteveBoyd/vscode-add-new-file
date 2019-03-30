@@ -1,14 +1,14 @@
 import * as fileSystem from './file-system-wrapper';
 import * as vscode from 'vscode';
-import * as fileConfigProvider from './providers/file-configuration-provider';
+import { processPath } from './add-new-file-handler';
+import { getCustomConfigFilePath } from './providers/file-configuration-provider';
 
-export function addCustomTemplateFile(): void {
-  const path = `${vscode.workspace.rootPath}\\file-type-configuration.json`;
-  const data = fileConfigProvider.getDefaultFileConfigurationJson();
+export function openCustomTemplateFile(context: vscode.ExtensionContext) {
+  const customTemplateFilePath: vscode.Uri = getCustomConfigFilePath(context);
 
-  fileSystem.deleteFile(path);
-  fileSystem.writeToFile(path, data);
-  vscode.workspace
-    .openTextDocument(path)
-    .then(doc => vscode.window.showTextDocument(doc));
+  if (!fileSystem.fileExists(customTemplateFilePath.fsPath)) {
+    processPath(customTemplateFilePath.fsPath, context);
+  }
+
+  vscode.window.showTextDocument(customTemplateFilePath);
 }

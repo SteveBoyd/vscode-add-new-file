@@ -5,7 +5,7 @@ import * as fileConfigurationProvider from './providers/file-configuration-provi
 import * as nameProvider from './providers/name-provider';
 import * as templateHelpers from './helpers/file-template-helpers';
 
-export function addNewFileFromCommand() {
+export function addNewFileFromCommand(context: vscode.ExtensionContext) {
   let rootPath = '';
   if (vscode.workspace.rootPath) {
     rootPath = `${vscode.workspace.rootPath}\\`;
@@ -19,13 +19,16 @@ export function addNewFileFromCommand() {
         value: rootPath,
         valueSelection: [rootPathLength, rootPathLength]
       })
-      .then(processUserInput);
+      .then((userInput: string | undefined) => processPath(userInput, context));
   } catch (exception) {
     console.error(exception);
   }
 }
 
-export function addNewFileFromExplorerContext(uri: vscode.Uri) {
+export function addNewFileFromExplorerContext(
+  uri: vscode.Uri,
+  context: vscode.ExtensionContext
+) {
   console.log(uri);
   let rootPath = '';
   if (uri && uri.fsPath) {
@@ -42,17 +45,22 @@ export function addNewFileFromExplorerContext(uri: vscode.Uri) {
         value: rootPath,
         valueSelection: [rootPathLength, rootPathLength]
       })
-      .then(processUserInput);
+      .then((userInput: string | undefined) => processPath(userInput, context));
   } catch (exception) {
     console.error(exception);
   }
 }
 
-function processUserInput(userInput: string | undefined): void {
-  if (userInput) {
-    const normalizedResult = stringHelpers.replaceAll(userInput, '/', '\\');
-
-    var resultParts = stringHelpers.split(normalizedResult, '\\', true);
+export function processPath(
+  path: string | undefined,
+  context: vscode.ExtensionContext
+): void {
+  if (path) {
+    const customConfigPath = fileConfigurationProvider.getCustomConfigFilePath(
+      context
+    );
+    const normalizedResult = stringHelpers.replaceAll(path, '/', '\\');
+    const resultParts = stringHelpers.split(normalizedResult, '\\', true);
 
     if (!resultParts) {
       return;
@@ -62,7 +70,8 @@ function processUserInput(userInput: string | undefined): void {
     for (let pathPart of resultParts) {
       builtPath = builtPath.concat(pathPart);
       const fileConfiguration = fileConfigurationProvider.getFileConfiguration(
-        pathPart
+        pathPart,
+        customConfigPath.fsPath
       );
 
       if (fileConfiguration.Identifier === 'Directory') {
