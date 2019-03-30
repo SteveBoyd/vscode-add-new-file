@@ -2,7 +2,7 @@
 	"name": "addfile",
 	"displayName": "Add File",
 	"description": "Provides a shortcut for creating files with a relevant template",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"publisher": "SteveBoydDev",
 	"engines": {
 		"vscode": "^1.32.0"
@@ -18,7 +18,8 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.addNewFile",
 				"title": "Add File: Add New File"
 			},
@@ -31,17 +32,21 @@
 				"title": "Add File: Edit Custom Templates"
 			}
 		],
-		"keybindings": [{
-			"command": "extension.addNewFile",
-			"key": "shift+f2",
-			"when": "workspaceFolderCount != 0"
-		}],
+		"keybindings": [
+			{
+				"command": "extension.addNewFile",
+				"key": "shift+f2",
+				"when": "workspaceFolderCount != 0"
+			}
+		],
 		"menus": {
-			"explorer/context": [{
-				"command": "extension.explorerAddNewFile",
-				"when": "workspaceFolderCount != 0",
-				"group": "navigation"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.explorerAddNewFile",
+					"when": "workspaceFolderCount != 0",
+					"group": "navigation"
+				}
+			]
 		}
 	},
 	"scripts": {
