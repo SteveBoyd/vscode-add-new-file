@@ -25,7 +25,6 @@ export function addNewFileFromExplorerContext(
   uri: vscode.Uri,
   context: vscode.ExtensionContext
 ) {
-  console.log(uri);
   let rootPath = '';
   if (uri && uri.fsPath) {
     rootPath = `${uri.fsPath}\\`;
