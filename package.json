@@ -1,73 +1,75 @@
 {
-	"name": "addfile",
-	"displayName": "Add File",
-	"description": "Provides a shortcut for creating files with a relevant template",
-	"version": "1.0.0",
-	"publisher": "SteveBoydDev",
-	"engines": {
-		"vscode": "^1.32.0"
-	},
-	"license": "MIT",
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.addNewFile",
-		"onCommand:extension.explorerAddNewFile",
-		"onCommand:extension.editCustomTemplateFile"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.addNewFile",
-				"title": "Add File: Add New File"
-			},
-			{
-				"command": "extension.explorerAddNewFile",
-				"title": "Add Templated File"
-			},
-			{
-				"command": "extension.editCustomTemplateFile",
-				"title": "Add File: Edit Custom Templates"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "extension.addNewFile",
-				"key": "shift+f2",
-				"when": "workspaceFolderCount != 0"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "extension.explorerAddNewFile",
-					"when": "workspaceFolderCount != 0",
-					"group": "navigation"
-				}
-			]
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "npm run compile && node ./node_modules/vscode/bin/test"
-	},
-	"devDependencies": {
-		"@types/mocha": "^2.2.42",
-		"@types/node": "^10.12.30",
-		"tslint": "^5.12.1",
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28"
-	},
-	"bugs": {
-		"url": "https://github.com/SteveBoyd/vscode-add-new-file/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/SteveBoyd/vscode-add-new-file.git"
-	}
+  "name": "addfile",
+  "displayName": "Add File",
+  "description": "Provides a shortcut for creating files with a relevant template",
+  "version": "1.0.0",
+  "publisher": "SteveBoydDev",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.addNewFile",
+    "onCommand:extension.explorerAddNewFile",
+    "onCommand:extension.editCustomTemplateFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.addNewFile",
+        "title": "Add Templated File",
+        "category": "Add File"
+      },
+      {
+        "command": "extension.explorerAddNewFile",
+        "title": "Add Templated File"
+      },
+      {
+        "command": "extension.editCustomTemplateFile",
+        "title": "Edit Custom Templates",
+        "category": "Add File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.addNewFile",
+        "key": "shift+f2",
+        "when": "workspaceFolderCount != 0"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.explorerAddNewFile",
+          "when": "workspaceFolderCount != 0",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^10.12.30",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28"
+  },
+  "bugs": {
+    "url": "https://github.com/SteveBoyd/vscode-add-new-file/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SteveBoyd/vscode-add-new-file.git"
+  }
 }
