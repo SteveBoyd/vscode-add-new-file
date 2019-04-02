@@ -9,7 +9,14 @@ export function processPath(
   path: string | undefined,
   context: vscode.ExtensionContext
 ): void {
-  if (!path) {
+  if (path === undefined) {
+    // Hits if user hits escape key
+    return;
+  }
+
+  const pathUri = vscode.Uri.parse(path);
+  if (pathUri.scheme === '') {
+    vscode.window.showWarningMessage('Invalid path provided for new file.');
     return;
   }
 
