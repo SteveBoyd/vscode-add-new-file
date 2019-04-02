@@ -2,7 +2,7 @@
   "name": "addfile",
   "displayName": "Add File",
   "description": "Provides a shortcut for creating files with a relevant template",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "SteveBoydDev",
   "engines": {
     "vscode": "^1.32.0"
