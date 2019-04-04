@@ -186,6 +186,28 @@ export class [[FileName]] {
 }
 ```
 
+### Typescript Jasmine Test
+
+#### Pattern
+
+```regex
+^.+[.]spec[.]ts$
+```
+
+#### FileTemplate
+
+```typescript
+describe('AppComponent', () => {
+    beforeEach(() => {
+
+    });
+
+    it('should create the app', () => {
+
+    });
+});
+```
+
 ## New Templates
 
 If you want a file template to be added then you can either:

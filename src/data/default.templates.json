@@ -50,7 +50,7 @@
       "FileTemplate": "import { Injectable } from '@angular/core';\n\n@Injectable({\n\tprovidedIn: 'root'\n})\nexport class [[FileName]] {\n\n\tconstructor() { }\n}"
     },
     {
-      "Identifier": "JasmineTest",
+      "Identifier": "TypescriptJasmineTest",
       "Pattern": "^.+[.]spec[.]ts$",
       "FileTemplate": "describe('AppComponent', () => {\n\tbeforeEach(() => {\n\t});\n\n\tit('should create the app', () => {\n\t});\n});"
     }
