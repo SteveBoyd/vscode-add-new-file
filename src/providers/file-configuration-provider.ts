@@ -15,13 +15,27 @@ export function getFileConfiguration(
     customConfigPath
   );
 
+  const matches: [FileConfiguration, RegExpMatchArray][] = [];
+
   for (let fileConfig of configurationData) {
-    if (fileName.match(fileConfig.Pattern)) {
-      return {
-        Identifier: fileConfig.Identifier,
-        FileTemplate: fileConfig.FileTemplate
-      } as FileConfiguration;
+    const match = fileName.match(fileConfig.Pattern);
+    if (match) {
+      matches.push([fileConfig, match]);
     }
+  }
+
+  if (matches.length !== 0) {
+    let selectedMatch: FileConfiguration = matches[0][0];
+
+    for (let i = 1; i < matches.length; i++) {
+      const currentMatch = matches[i];
+
+      if (currentMatch[0].Priority > selectedMatch.Priority) {
+        selectedMatch = matches[i][0];
+      }
+    }
+
+    return selectedMatch;
   }
 
   return {
